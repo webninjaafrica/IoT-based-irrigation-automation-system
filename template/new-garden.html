@@ -1,0 +1,135 @@
+{% extends "template.html" %}
+{% block datax %}
+<form method="POST">
+	<div class="panel panel-default">
+<div class="panel-heading">New Garden (registering)</div>
+<div class="panel-body">
+	{{status |safe}}
+<div class="row">
+	<div class="col-sm-4 col-md-4 col-lg-4 col-xs-12">
+		
+		<div class="row form-group">
+		<div class="col-12 col-sm-2">Garden (not having spaces)</div>
+		<div class="col-12 col-sm-9">
+			<input type="text" name="garden" class="form-control" required>
+		</div>
+	</div>
+
+	<div class="row form-group">
+		<div class="col-12 col-sm-2">Address/Location Info.</div>
+		<div class="col-12 col-sm-9">
+			<input type="text" name="address" class="form-control">
+		</div>
+	</div>
+
+
+	<div class="row form-group">
+		<div class="col-12 col-sm-2">Latitude (gps)</div>
+		<div class="col-12 col-sm-9">
+			<input type="text" name="latitude" class="form-control" required>
+		</div>
+	</div>
+
+
+	<div class="row form-group">
+		<div class="col-12 col-sm-2">Longitude (gps)</div>
+		<div class="col-12 col-sm-9">
+			<input type="text" name="longitude" class="form-control" required>
+		</div>
+	</div>
+
+	<div class="row form-group">
+		<div class="col-12 col-sm-2">farm length (meters)</div>
+		<div class="col-12 col-sm-9">
+			<input type="number" name="length" class="form-control" required>
+		</div>
+	</div>
+
+	</div>
+	<div class="col-sm-4 col-md-4 col-lg-4 col-xs-12">
+		
+
+		<div class="row form-group">
+		<div class="col-12 col-sm-2">Farm width (meters)</div>
+		<div class="col-12 col-sm-9">
+			<input type="text" name="width" class="form-control" required>
+		</div>
+	</div>
+
+
+	<div class="row form-group">
+		<div class="col-12 col-sm-2">Soil temperature in <sup>o</sup>C (Threshold)</div>
+		<div class="col-12 col-sm-9">
+			<input type="text" name="temperature" class="form-control" required>
+		</div>
+	</div>
+
+	
+
+
+	<div class="row form-group">
+		<div class="col-12 col-sm-2">Amount_of_water_per_interval in litres (when irrigating)</div>
+		<div class="col-12 col-sm-9">
+			<input type="text" name="amount_of_water_per_interval" class="form-control" required>
+		</div>
+	</div>
+
+	<div class="row form-group">
+		<div class="col-12 col-sm-2">Humidity (Threshold)</div>
+		<div class="col-12 col-sm-9">
+			<input type="text" name="normal_humidity" class="form-control" required>
+		</div>
+	</div>
+
+	<div class="row form-group">
+		<div class="col-12 col-sm-2">Moisture(Threashold)</div>
+		<div class="col-12 col-sm-9">
+			<input type="text" name="normal_moisture_threshhold" class="form-control" required>
+		</div>
+	</div>
+
+
+	</div>
+	<div class="col-sm-4 col-md-4 col-lg-4 col-xs-12">
+		
+		<div class="row form-group">
+		<div class="col-12 col-sm-2">Water Crops after</div>
+		<div class="col-12 col-sm-9">
+			<input type="number" name="watering_interval" value="12" class="form-control" required style="width:76px;"> Hours
+		</div>
+	</div>
+
+	<div class="row form-group">
+		<div class="col-12 col-sm-2">Crops Grown/ Growing (seperate with comma (,)</div>
+		<div class="col-12 col-sm-9">
+			<textarea name="crops" class="form-control" required></textarea>
+		</div>
+	</div>
+
+	<div class="row form-group">
+		<div class="col-12 col-sm-2">Selected_watering_option</div>
+		<div class="col-12 col-sm-9">
+			<select name="selected_watering_option" class="form-control">
+				<option value="when_soil_runs_below_set_moisture_content">when_soil_runs_below_set_moisture_content</option>
+				<option value="with_interval">with_interval (with the entered interval)</option>
+				<option value="dont_irrigate">dont_irrigate (Pause watering this garden)</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="row form-group">
+		<div class="col-12 col-sm-2">Other_info/comments</div>
+		<div class="col-12 col-sm-9">
+			<textarea name="other_info" class="form-control"></textarea>
+		</div>
+	</div>
+
+	</div>
+</div>
+
+</div>
+<div class="panel-footer">
+	<button type="submit" class="btn btn-primary btn-lg btn-block">ADD GARDEN</button>
+</div>
+</div>
+</form>{% endblock %}

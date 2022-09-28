@@ -1,0 +1,46 @@
+CREATE TABLE "live_log" (
+	"log_id"	INTEGER,
+	"garden"	TEXT,
+	"light_intensity"	TEXT,
+	"humidity_level"	TEXT,
+	"temperature_level"	TEXT,
+	"soil_moisture"	TEXT,
+	"timestamp_now"	TEXT,
+	PRIMARY KEY("log_id" AUTOINCREMENT)
+);
+
+
+CREATE TABLE "farm_data" (
+	"data_id"	INTEGER,
+	"date"	TEXT,
+	"garden"	TEXT,
+	"last_watering_time"	TEXT,
+	"next_sheduled_time"	TEXT,
+	"last_rained"	TEXT,
+	"current_temperature"	TEXT,
+	"humidity"	TEXT,
+	"uv_radiation"	TEXT,
+	"soil_moisture"	TEXT,
+	"nutrients"	TEXT,
+	"already_irrigated"	TEXT,
+	"amount_of_water"	TEXT,
+	PRIMARY KEY("data_id" AUTOINCREMENT)
+);
+
+CREATE TABLE "garden_settings" (
+	"garden_id"	INTEGER,
+	"garden"	TEXT,
+	"address"	TEXT,
+	"latitude"	TEXT,
+	"longitude"	TEXT,
+	"length"	TEXT,
+	"temperature"	TEXT,
+	"width"	TEXT,
+	"amount_of_water_per_interval"	TEXT,
+	"normal_humidity"	TEXT,
+	"normal_moisture_threshhold"	TEXT,
+	"crops"	TEXT,
+	"watering_interval"	TEXT,
+	"selected_watering_option"	TEXT,
+	"other_info"	TEXT
+);

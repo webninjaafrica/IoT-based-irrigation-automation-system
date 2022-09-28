@@ -1,0 +1,70 @@
+{% extends "template.html" %}
+{% block datax %}
+	<div class="page-header">My Gardens (NOW) <div class="btn-group"><a href="add-garden" class="btn btn-primary"><i class="fa plus"></i>Add Shamba</a> <a href="logout" class="btn btn-info"><i class="fa power-off"></i>Log Out</a></div></div>
+
+	<div class="row">
+		<div class="col-sm-8 col-md-8 col-xs-8 col-lg-8" id="analytics">
+			{% for garden in gardens: %}
+			<div class="page-header">{{garden['garden']}}</div>
+			<div class="row" style="flex-wrap: wrap;">
+				
+				<div class="col-sm-3 col-md-3 col-lg-3 col-xs-12">Sunlight Intensity: <span id="{{garden['garden']}}-light-intensity"></span></div>
+				<div class="col-sm-3 col-md-3 col-lg-3 col-xs-12">Humidity Level: <span id="{{garden['garden']}}-humidity-level"></span></div>
+				<div class="col-sm-3 col-md-3 col-lg-3 col-xs-12">Temperature Level: <span id="{{garden['garden']}}-temperature-level"></span></div>
+				<div class="col-sm-3 col-md-3 col-lg-3 col-xs-12">Soil Moisture: <span id="{{garden['garden']}}-soil-moisture"></span></div>
+				<div class="col-sm-3 col-md-3 col-lg-3 col-xs-12">Total Watering Cycles: <span id="{{garden['garden']}}-soil-watering-cycles"></span></div>
+				<div class="col-sm-3 col-md-3 col-lg-3 col-xs-12">Last Irrigated On: <span id="{{garden['garden']}}-last-irrigated"></span></div>
+				<div class="col-sm-3 col-md-3 col-lg-3 col-xs-12">Watering Cycles (remaining): <span id="{{garden['garden']}}-cycles-remaining"></span></div>
+			</div>
+			{% endfor %}
+
+		</div>
+		<div class="col-sm-4 col-md-4 col-xs-4 col-lg-4" id="info">
+
+		</div>
+{% endblock %}
+
+<script type="text/javascript">
+	var info_board=document.querySelector("#info");
+	function update_board(garden){
+		var light_intensity=document.querySelector("#"+garden+"-light-intensity");
+		var humidity_level=document.querySelector("#"+garden+"-humidity-level");
+		var temperature_level=document.querySelector("#"+garden+"-temperature-level");
+		var soil_moisture=document.querySelector("#"+garden+"-soil-moisture");
+		var soil_watering_cycles=document.querySelector("#"+garden+"-soil-watering-cycles");
+		var remaining_cycles=document.querySelector("#"+garden+"-cycles-remaining");
+		var last_irrigated=document.querySelector("#"+garden+"-last-irrigated");
+		
+		try{
+			$.ajax({
+				method: "GET",
+				url: "/analytics?garden="+garden,
+				success: function(html){
+
+					var dump=JSON.parse(html);
+					light_intensity.innerHTML=dump["light_intensity"];
+					humidity_level.innerHTML=dump["humidity_level"];
+					temperature_level=dump["temperature_level"];
+					soil_moisture=dump["soil_moisture"];
+					soil_watering_cycles=dump["soil_watering_cycles"];
+					remaining_cycles=dump["remaining_cycles"];
+					last_irrigated.innerHTML=dump['last_irrigated'];
+
+
+				}
+			});
+
+		}catch(e){
+			alert("error: "+e.message());
+		}
+	}
+
+	window.onload=function(){
+		{% for gd in gardens: %}
+			update_board({{gd['garden']}});
+		{% endfor %}
+	};
+
+</script>
+</body>
+</html>

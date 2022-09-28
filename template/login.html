@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Login | App</title>
+</head>
+<body>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-4 col-md-4 col-lg-4 col-xs-12 col-md-offset-4 col-lg-offset-4 col-sm-offset-4">
+			<form method="POST">
+			<div class="panel panel-primary">
+				<div class="panel-heading">Account | Authentication</div>
+				<div class="panel-body">
+					{{status | safe}}
+					<div class="form-group">
+						<b>Username</b>
+						<input type="text" name="username" required class="form-control">
+					</div>
+					<div class="form-group">
+						<b>Enter Password:</b>
+						<input type="Password" name="password" required class="form-control">
+					</div>
+				</div>
+				<div class="panel-footer">
+					<button type="submit" class="btn btn-primary btn-lg btn-block"><i class="fa fa-padlock-o"></i>OKAY</button>
+				</div>
+			</div>
+		</form>
+		</div>
+	</div>
+</div>
+</body>
+</html>
